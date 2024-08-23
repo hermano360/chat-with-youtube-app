@@ -33,7 +33,7 @@ export default function Home() {
       `${process.env.NEXT_PUBLIC_API_URL}/api/question`,
       {
         method: "POST",
-        body: JSON.stringify({ question }),
+        body: JSON.stringify({ question, username: "awsdevelopers" }),
       }
     );
     const data: MessagePostResponse = await response.json();
@@ -82,7 +82,16 @@ export default function Home() {
         </button>
       </div>
 
-      {summary && <p className="text-base text-center mb-10">{summary}</p>}
+      {summary && (
+        <div className="flex flex-col text-center mb-10">
+          {summary
+            .split("\n")
+            .filter((section) => section)
+            .map((section) => (
+              <p className="text-base text-center mb-2">{section}</p>
+            ))}
+        </div>
+      )}
 
       {embedId && (
         <div className="flex flex-col items-center">

@@ -1,30 +1,157 @@
+type TranscriptEntryResult = {
+  caption: string;
+  link: string;
+  title: string;
+  timeStamp: number;
+};
+
+import { Pinecone } from "@pinecone-database/pinecone";
+import OpenAI from "openai";
+import { OPENAI_KEY, PINECONE_KEY } from "./env";
+
+const openai = new OpenAI({
+  apiKey: OPENAI_KEY,
+});
+
+const pc = new Pinecone({
+  apiKey: PINECONE_KEY,
+});
+
+const checkIndexExist = async (indexName: string) => {
+  const { indexes = [] } = await pc.listIndexes();
+  const doesIndexExist = indexes.reduce((result, index) => {
+    return result || index.name === indexName;
+  }, false);
+
+  return doesIndexExist;
+};
+
+const queryResult = async (username: string, userInput: string) => {
+  const indexName = "youtube";
+  console.log(`-------\nNow asking @${username}: \n\n${userInput}:\n`);
+  console.log(`...`);
+
+  const doesIndexExist = await checkIndexExist(indexName);
+  if (!doesIndexExist) {
+    console.log(`${indexName} - index does not exist`);
+    return [];
+  }
+  const pcIndex = pc.index<TranscriptEntryResult>(indexName);
+
+  const questionEmbeddingResult = await openai.embeddings.create({
+    model: "text-embedding-3-small",
+    input: userInput,
+  });
+
+  const embedding = questionEmbeddingResult.data[0].embedding;
+
+  const { matches } = await pcIndex.namespace(username).query({
+    topK: 10,
+    vector: embedding,
+    includeValues: false,
+    includeMetadata: true,
+  });
+
+  const results = matches.map(({ metadata }) => metadata).filter((a) => a);
+
+  return results;
+};
+
+export const aggregateTranscriptsResults = (
+  transcriptResults: (TranscriptEntryResult | undefined)[]
+) => {
+  const transcriptCollection: Record<
+    string,
+    { link: string; title: string; timeStamps: number[] }
+  > = {};
+  const transcriptUrlList: string[] = [];
+
+  transcriptResults
+    .filter((a) => a)
+    .forEach((transcriptEntry) => {
+      if (!transcriptEntry) {
+        return;
+      }
+      if (!transcriptUrlList.includes(transcriptEntry.link)) {
+        transcriptUrlList.push(transcriptEntry.link);
+        transcriptCollection[transcriptEntry.link] = {
+          link: transcriptEntry.link,
+          title: transcriptEntry.title,
+          timeStamps: [],
+        };
+      }
+
+      transcriptCollection[transcriptEntry.link].timeStamps.push(
+        transcriptEntry.timeStamp
+      );
+    });
+
+  return transcriptUrlList.map((url) => transcriptCollection[url]);
+};
+
+const formatMessage = async (
+  input: string,
+  results: (TranscriptEntryResult | undefined)[]
+) => {
+  const context = results
+    .map((result) => {
+      return result?.caption;
+    })
+    .join("\n\n");
+
+  const result = await openai.chat.completions.create({
+    model: "gpt-3.5-turbo",
+    messages: [
+      {
+        role: "system",
+        content: `Answer the users questions based on the following context: ${context}`,
+      },
+      { role: "user", content: `Can you tell me more about ${input}` },
+    ],
+    temperature: 0.7,
+    top_p: 1,
+  });
+
+  return result.choices[0].message.content;
+};
+
 export const handler = async (event: any) => {
+  const { body } = event;
+
+  if (!body) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        summary: ``,
+        clips: [],
+      }),
+    };
+  }
+  const { question = "", username = "" } = JSON.parse(body);
+
+  if (!question || !username) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        summary: ``,
+        clips: [],
+      }),
+    };
+  }
+
+  console.log({ question, username });
+  const results = await queryResult(username, question);
+  console.log({ results });
+
+  const summary = await formatMessage(question, results);
+  console.log({ summary });
+  const clips = aggregateTranscriptsResults(results);
+  console.log({ clips });
   return {
     statusCode: 200,
     body: JSON.stringify({
-      summary: `So Nvidia's stock has been on a rollercoaster recently. After becoming the
-  world's most valuable company, its shares plummeted 13% over three
-  trading days, wiping out $430 billion of its market cap. However, Nvidia
-  announced a 10 to 1 stock split to make stock ownership more accessible.
-  Despite this drop, the stock has been performing well overall, with
-  record highs and a market cap of $1.16 trillion. The company's role as a
-  leader in AI technology has propelled its stock price, but any negative
-  news can lead to significant stock reactions. Moreover, Nvidia's revenue
-  growth has been exceptional, with a 262% increase in the recent quarter,
-  far surpassing the average S&P 500 company's growth.`,
-      clips: [
-        {
-          link: "https://www.youtube.com/watch?v=e7BdS1rVkUI",
-          timeStamps: [0, 30, 60, 90],
-          title: "Countering Leg Hug",
-        },
-        {
-          link: "https://www.youtube.com/watch?v=twVm5uGzEKA",
-          timeStamps: [120, 180, 30],
-          title:
-            "Busting Myths and Misconceptions: IaC and Serverless Workflows",
-        },
-      ],
+      summary,
+      clips,
     }),
   };
 };
