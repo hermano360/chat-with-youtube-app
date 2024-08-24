@@ -18,6 +18,10 @@ export default $config({
       environment: {
         NEXT_PUBLIC_API_URL: api.url,
       },
+      domain: {
+        name: "chatwithclips.com",
+        redirects: ["www.chatwithclips.com"],
+      },
     });
   },
 });
