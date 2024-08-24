@@ -32,7 +32,7 @@ export default function Home() {
                 {displayName}
               </div>
               <div className="w-full text-center text-sm text-gray-400">
-                {username}
+                @{username}
               </div>
             </a>
           </li>
