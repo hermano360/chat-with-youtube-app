@@ -41,7 +41,7 @@ export const YoutubeEmbed = ({
   const width = rawWidth > 800 ? 800 : rawWidth;
 
   if (!embedId) {
-    return <div />;
+    return <div ref={videoRef} />;
   }
   return (
     <div className="flex flex-col items-center" ref={videoRef}>
@@ -59,7 +59,7 @@ export const YoutubeEmbed = ({
         />
       </div>
 
-      <p className="mt-4 text-gray-400">
+      <p className="mt-4 text-gray-400 text-sm">
         Youtube is sometimes flakey, feel free to re-click source link to open
         in a new tab
       </p>
