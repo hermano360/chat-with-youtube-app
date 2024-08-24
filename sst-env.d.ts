@@ -7,6 +7,10 @@ declare module "sst" {
       "type": "sst.aws.ApiGatewayV2"
       "url": string
     }
+    "ChatWithClipsDB": {
+      "name": string
+      "type": "sst.aws.Dynamo"
+    }
     "ChatWithClipsWeb": {
       "type": "sst.aws.Nextjs"
       "url": string

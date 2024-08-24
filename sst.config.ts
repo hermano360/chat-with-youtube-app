@@ -1,5 +1,7 @@
 /// <reference path="./.sst/platform/config.d.ts" />
 
+import { link } from "fs";
+
 export default $config({
   app(input) {
     return {
@@ -9,9 +11,27 @@ export default $config({
     };
   },
   async run() {
-    const api = new sst.aws.ApiGatewayV2("ChatWithClipsApi");
+    const table = new sst.aws.Dynamo("ChatWithClipsDB", {
+      fields: {
+        pk: "string",
+        sk: "string",
+      },
+      primaryIndex: { hashKey: "pk", rangeKey: "sk" },
+    });
 
-    api.route("GET /api", "src/get.handler");
+    const api = new sst.aws.ApiGatewayV2("ChatWithClipsApi", {
+      domain: {
+        name: "chatwithclips.com",
+      },
+      transform: {
+        route: {
+          handler: {
+            link: [table],
+          },
+        },
+      },
+    });
+
     api.route("POST /api/question", "src/post.handler");
 
     new sst.aws.Nextjs("ChatWithClipsWeb", {

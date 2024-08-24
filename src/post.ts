@@ -1,13 +1,17 @@
+import { Pinecone } from "@pinecone-database/pinecone";
+import OpenAI from "openai";
+import { APIGatewayProxyEvent } from "aws-lambda";
+import { Resource } from "sst";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { PutCommand, DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
+import { OPENAI_KEY, PINECONE_KEY } from "./env";
+
 type TranscriptEntryResult = {
   caption: string;
   link: string;
   title: string;
   timeStamp: number;
 };
-
-import { Pinecone } from "@pinecone-database/pinecone";
-import OpenAI from "openai";
-import { OPENAI_KEY, PINECONE_KEY } from "./env";
 
 const openai = new OpenAI({
   apiKey: OPENAI_KEY,
@@ -16,6 +20,8 @@ const openai = new OpenAI({
 const pc = new Pinecone({
   apiKey: PINECONE_KEY,
 });
+
+const dynamoDb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 
 const checkIndexExist = async (indexName: string) => {
   const { indexes = [] } = await pc.listIndexes();
@@ -115,7 +121,7 @@ const formatMessage = async (
   return result.choices[0].message.content;
 };
 
-export const handler = async (event: any) => {
+export const handler = async (event: APIGatewayProxyEvent) => {
   const { body } = event;
 
   if (!body) {
@@ -138,15 +144,24 @@ export const handler = async (event: any) => {
       }),
     };
   }
+  const params = {
+    TableName: Resource.ChatWithClipsDB.name,
+    Item: {
+      pk: `searchResult`,
+      sk: `${username}-${question}-${Date.now()}`,
+    },
+  };
 
-  console.log({ question, username });
   const results = await queryResult(username, question);
-  console.log({ results });
-
   const summary = await formatMessage(question, results);
-  console.log({ summary });
   const clips = aggregateTranscriptsResults(results);
-  console.log({ clips });
+
+  try {
+    await dynamoDb.send(new PutCommand(params));
+  } catch (err) {
+    console.error(err);
+  }
+
   return {
     statusCode: 200,
     body: JSON.stringify({
