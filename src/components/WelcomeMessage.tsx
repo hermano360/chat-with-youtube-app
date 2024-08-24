@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export function WelcomeMessage({ username }: { username: string }) {
+interface WelcomeMessageProps {
+  username: string;
+  displayName: string;
+}
+export function WelcomeMessage({ username, displayName }: WelcomeMessageProps) {
   return (
     <>
       <h2 className="mb-2 text-lg font-semibold text-center">Welcome to</h2>
@@ -16,7 +20,7 @@ export function WelcomeMessage({ username }: { username: string }) {
         target="_blank"
         rel="noopener noreferrer"
       >
-        @{username}
+        {displayName}
       </a>
     </>
   );

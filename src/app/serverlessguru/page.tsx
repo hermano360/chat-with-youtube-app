@@ -1,9 +1,10 @@
 "use client";
 
 import { PartnerPage } from "@/components/PartnerPage";
+import { PAGE_CONFIG } from "@/types";
 
-const username = "serverlessguru";
+const { username, displayName } = PAGE_CONFIG["serverlessguru"];
 
 export default function Page() {
-  return <PartnerPage username={username} />;
+  return <PartnerPage username={username} displayName={displayName} />;
 }

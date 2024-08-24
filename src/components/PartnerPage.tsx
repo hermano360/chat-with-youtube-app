@@ -11,7 +11,11 @@ import { useVideoHandling } from "@/hooks";
 import { FooterText } from "./FooterText";
 import { useRef } from "react";
 
-export function PartnerPage({ username }: { username: string }) {
+interface PartnerPageProps {
+  username: string;
+  displayName: string;
+}
+export function PartnerPage({ username, displayName }: PartnerPageProps) {
   const {
     isLoading,
     embedId,
@@ -37,7 +41,7 @@ export function PartnerPage({ username }: { username: string }) {
   return (
     <>
       <PageWrapper>
-        <WelcomeMessage username={username} />
+        <WelcomeMessage username={username} displayName={displayName} />
 
         <QuestionInput
           onStart={onStart}

@@ -1,9 +1,9 @@
 export default function Home() {
   const pages = [
-    "awsdevelopers",
-    "MorningBrewDailyShow",
-    "serverlessguru",
-    "joenissim",
+    { username: "awsdevelopers", displayName: "AWS Developers" },
+    { username: "MorningBrewDailyShow", displayName: "Morning Brew Daily" },
+    { username: "serverlessguru", displayName: "Serverless Guru" },
+    { username: "joenissim", display: "Nissim Tutoring⎮Joe Nissim" },
   ];
 
   return (
@@ -16,18 +16,21 @@ export default function Home() {
         Click on one of our supported Youtube Creators to get started!
       </p>
       <ul className="grid w-full md:w-1/2 gap-6 xl:grid-cols-2">
-        {pages.map((page) => (
-          <li key={page}>
+        {pages.map(({ username, displayName }) => (
+          <li key={username}>
             <a
-              href={`/${page}`}
-              className={`inline-flex items-center 
+              href={`/${username}`}
+              className={`flex flex-col items-center 
                         justify-center w-full p-5 bg-gray-900 text-white
                         border  rounded-lg cursor-pointer 
                         hover:text-gray-300 border-gray-600 
                         hover:bg-gray-600`}
             >
-              <div className="w-full text-center text-lg font-semibold">
-                {page}
+              <div className="w-full text-center text-lg font-semibold mb-2">
+                {username}
+              </div>
+              <div className="w-full text-center text-sm text-gray-400">
+                {displayName}
               </div>
             </a>
           </li>
