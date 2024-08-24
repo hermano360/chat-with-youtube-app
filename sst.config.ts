@@ -21,7 +21,7 @@ export default $config({
 
     const api = new sst.aws.ApiGatewayV2("ChatWithClipsApi", {
       domain: {
-        name: "chatwithclips.com",
+        name: "app.chatwithclips.com",
       },
       transform: {
         route: {
