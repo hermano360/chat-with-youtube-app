@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, RefObject } from "react";
 
 const useSize = () => {
   const [windowSize, setWindowSize] = useState([0, 300]);
@@ -21,15 +21,19 @@ const useSize = () => {
   return windowSize;
 };
 
+interface YoutubeEmbedProps {
+  embedId: string;
+  title: string;
+  onClear: () => void;
+  videoRef: RefObject<HTMLDivElement>;
+}
+
 export const YoutubeEmbed = ({
   embedId,
   title,
   onClear,
-}: {
-  embedId: string;
-  title: string;
-  onClear: () => void;
-}) => {
+  videoRef,
+}: YoutubeEmbedProps) => {
   const url = `https://www.youtube.com/embed/${embedId}&autoplay=1`;
   const windowsize = useSize();
 
@@ -40,7 +44,7 @@ export const YoutubeEmbed = ({
     return <div />;
   }
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center" ref={videoRef}>
       {title && <h1 className="text-xl font-semibold mb-4">{title}</h1>}
 
       <div className="video-responsive">

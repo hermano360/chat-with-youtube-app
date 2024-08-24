@@ -9,6 +9,7 @@ import { WelcomeMessage } from "@/components/WelcomeMessage";
 import { YoutubeEmbed } from "@/components/YoutubeEmbed";
 import { useVideoHandling } from "@/hooks";
 import { FooterText } from "./FooterText";
+import { useRef } from "react";
 
 export function PartnerPage({ username }: { username: string }) {
   const {
@@ -24,6 +25,15 @@ export function PartnerPage({ username }: { username: string }) {
     onError,
   } = useVideoHandling();
 
+  const videoRef = useRef<HTMLDivElement>(null);
+
+  const onVideoClick = (embedId: string, videoTitle: string) => {
+    setEmbedId(embedId);
+    setVideoTitle(videoTitle);
+    if (videoRef?.current) {
+      videoRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <>
       <PageWrapper>
@@ -43,13 +53,13 @@ export function PartnerPage({ username }: { username: string }) {
           embedId={embedId}
           title={videoTitle}
           onClear={() => setEmbedId("")}
+          videoRef={videoRef}
         />
 
         <VideoClips
           clips={clips}
           embedId={embedId}
-          setEmbedId={setEmbedId}
-          setVideoTitle={setVideoTitle}
+          onVideoClick={onVideoClick}
         />
         <FooterText />
       </PageWrapper>

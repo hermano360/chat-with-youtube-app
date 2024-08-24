@@ -2,17 +2,13 @@
 
 import { Clip } from "@/types";
 
-export function VideoClips({
-  clips,
-  embedId,
-  setEmbedId,
-  setVideoTitle,
-}: {
-  setEmbedId: (embedId: string) => void;
-  setVideoTitle: (videoTitle: string) => void;
+interface VideoClipsProps {
+  onVideoClick: (embedId: string, videoTitle: string) => void;
   embedId: string;
   clips: Clip[];
-}) {
+}
+
+export function VideoClips({ clips, embedId, onVideoClick }: VideoClipsProps) {
   if (clips.length === 0) return null;
 
   return (
@@ -29,14 +25,13 @@ export function VideoClips({
                   <a
                     onClick={() => {
                       if (isSelected) {
-                        setEmbedId("");
-                        setVideoTitle("");
+                        onVideoClick("", "");
+
                         window
                           ?.open(`${item.link}&t=${time}s`, "_blank")
                           ?.focus();
                       } else {
-                        setVideoTitle(item.title);
-                        setEmbedId(linkEmbedId);
+                        onVideoClick(linkEmbedId, item.title);
                       }
                     }}
                     className={`inline-flex items-center 
