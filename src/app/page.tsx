@@ -1,9 +1,11 @@
+import { PageConfig } from "@/types";
+
 export default function Home() {
-  const pages = [
+  const pages: PageConfig[] = [
     { username: "awsdevelopers", displayName: "AWS Developers" },
     { username: "MorningBrewDailyShow", displayName: "Morning Brew Daily" },
     { username: "serverlessguru", displayName: "Serverless Guru" },
-    { username: "joenissim", display: "Nissim Tutoring⎮Joe Nissim" },
+    { username: "joenissim", displayName: "Nissim Tutoring⎮Joe Nissim" },
   ];
 
   return (
@@ -27,10 +29,10 @@ export default function Home() {
                         hover:bg-gray-600`}
             >
               <div className="w-full text-center text-lg font-semibold mb-2">
-                {username}
+                {displayName}
               </div>
               <div className="w-full text-center text-sm text-gray-400">
-                {displayName}
+                {username}
               </div>
             </a>
           </li>
