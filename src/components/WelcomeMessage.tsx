@@ -8,9 +8,16 @@ export function WelcomeMessage({ username }: { username: string }) {
         Chat with Clips! 🎉
       </Link>
       <h2 className="mb-2 text-md font-semibold text-center">
-        What would you like to ask
+        What would you like to ask{" "}
       </h2>
-      <h2 className="mb-10 text-lg font-semibold text-center">@{username}?</h2>
+      <a
+        className="mb-10 text-lg font-semibold text-center"
+        href={`https://www.youtube.com/@${username}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        @{username}
+      </a>
     </>
   );
 }
