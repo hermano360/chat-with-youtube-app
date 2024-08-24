@@ -13,9 +13,9 @@ export default function Home() {
         Chat with Clips! 🎉
       </h2>
       <p className="mb-10 text-lg font-semibold text-center">
-        Click on one of our supported partners to get started!
+        Click on one of our supported Youtube Creators to get started!
       </p>
-      <ul className="grid w-1/2 gap-6 xl:grid-cols-2">
+      <ul className="grid w-full md:w-1/2 gap-6 xl:grid-cols-2">
         {pages.map((page) => (
           <li key={page}>
             <a
