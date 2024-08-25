@@ -1,6 +1,7 @@
 "use client";
 
 import { FooterText } from "@/components/FooterText";
+import { pageCounter } from "@/hooks";
 import { CreatorDisplayName, Creators, PageConfig } from "@/types";
 import { useEffect } from "react";
 
@@ -38,9 +39,7 @@ export default function Home() {
 
   // Just a simple counter
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api`, {
-      method: "GET",
-    });
+    pageCounter("index");
   }, []);
 
   return (

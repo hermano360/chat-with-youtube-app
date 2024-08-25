@@ -1,11 +1,19 @@
+"use client";
+import { pageCounter } from "@/hooks";
 import { CreatorDisplayName, Creators } from "@/types";
 import Link from "next/link";
+import { useEffect } from "react";
 
 interface WelcomeMessageProps {
   username: Creators;
   displayName: CreatorDisplayName;
 }
 export function WelcomeMessage({ username, displayName }: WelcomeMessageProps) {
+  // page counter
+  useEffect(() => {
+    pageCounter(username);
+  }, []);
+
   return (
     <>
       <h2 className="mb-2 text-lg font-semibold text-center">Welcome to</h2>

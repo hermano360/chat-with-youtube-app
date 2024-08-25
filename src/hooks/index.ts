@@ -3,6 +3,17 @@
 import { MessagePostResponse, Clip, Creators } from "@/types";
 import { useState, useEffect } from "react";
 
+export const pageCounter = async (page: Creators | "index") => {
+  if (!page) {
+    return;
+  }
+
+  fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/page`, {
+    method: "POST",
+    body: JSON.stringify({ page }),
+  });
+};
+
 export const handleQuestionSubmit = async (
   question: string,
   username: Creators,
