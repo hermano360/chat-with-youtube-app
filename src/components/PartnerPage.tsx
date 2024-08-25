@@ -10,10 +10,11 @@ import { YoutubeEmbed } from "@/components/YoutubeEmbed";
 import { useVideoHandling } from "@/hooks";
 import { FooterText } from "./FooterText";
 import { useRef } from "react";
+import { CreatorDisplayName, Creators } from "@/types";
 
 interface PartnerPageProps {
-  username: string;
-  displayName: string;
+  username: Creators;
+  displayName: CreatorDisplayName;
 }
 export function PartnerPage({ username, displayName }: PartnerPageProps) {
   const {

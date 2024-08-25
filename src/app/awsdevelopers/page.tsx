@@ -1,9 +1,9 @@
 "use client";
 
 import { PartnerPage } from "@/components/PartnerPage";
-import { PAGE_CONFIG } from "@/types";
+import { Creators, PAGE_CONFIG } from "@/types";
 
-const { username, displayName } = PAGE_CONFIG["awsdevelopers"];
+const { username, displayName } = PAGE_CONFIG[Creators.awsdevelopers];
 
 export default function Page() {
   return <PartnerPage username={username} displayName={displayName} />;

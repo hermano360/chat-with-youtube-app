@@ -1,8 +1,9 @@
+import { CreatorDisplayName, Creators } from "@/types";
 import Link from "next/link";
 
 interface WelcomeMessageProps {
-  username: string;
-  displayName: string;
+  username: Creators;
+  displayName: CreatorDisplayName;
 }
 export function WelcomeMessage({ username, displayName }: WelcomeMessageProps) {
   return (

@@ -1,12 +1,11 @@
 "use client";
 
-import { YoutubeEmbed } from "@/components/YoutubeEmbed";
-import { MessagePostResponse, Clip } from "@/types";
+import { MessagePostResponse, Clip, Creators } from "@/types";
 import { useState, useEffect } from "react";
 
 export const handleQuestionSubmit = async (
   question: string,
-  username: string,
+  username: Creators,
   onStart: () => void,
   onFinish: (summary: string, clips: Clip[]) => void,
   onError: () => void

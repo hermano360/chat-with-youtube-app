@@ -10,22 +10,45 @@ export type MessagePostResponse = {
 };
 
 export type PageConfig = {
-  username: string;
-  displayName: string;
+  username: Creators;
+  displayName: CreatorDisplayName;
 };
 
-export const PAGE_CONFIG: Record<string, PageConfig> = {
-  awsdevelopers: { username: "awsdevelopers", displayName: "AWS Developers" },
-  MorningBrewDailyShow: {
-    username: "MorningBrewDailyShow",
-    displayName: "Morning Brew Daily",
+export enum Creators {
+  "awsdevelopers",
+  "MorningBrewDailyShow",
+  "serverlessguru",
+  "joenissim",
+  "AndersErickson",
+}
+
+export enum CreatorDisplayName {
+  awsdevelopers = "AWS Developers",
+  MorningBrewDailyShow = "Morning Brew Daily",
+  serverlessguru = "Serverless Guru",
+  joenissim = "Nissim Tutoring⎮Joe Nissim",
+  AndersErickson = "Anders Erickson",
+}
+
+export const PAGE_CONFIG: Record<Creators, PageConfig> = {
+  [Creators.awsdevelopers]: {
+    username: Creators.awsdevelopers,
+    displayName: CreatorDisplayName.awsdevelopers,
   },
-  serverlessguru: {
-    username: "serverlessguru",
-    displayName: "Serverless Guru",
+  [Creators.MorningBrewDailyShow]: {
+    username: Creators.MorningBrewDailyShow,
+    displayName: CreatorDisplayName.MorningBrewDailyShow,
   },
-  joenissim: {
-    username: "joenissim",
-    displayName: "Nissim Tutoring⎮Joe Nissim",
+  [Creators.AndersErickson]: {
+    username: Creators.AndersErickson,
+    displayName: CreatorDisplayName.AndersErickson,
+  },
+  [Creators.serverlessguru]: {
+    username: Creators.serverlessguru,
+    displayName: CreatorDisplayName.serverlessguru,
+  },
+  [Creators.joenissim]: {
+    username: Creators.joenissim,
+    displayName: CreatorDisplayName.joenissim,
   },
 };

@@ -1,12 +1,7 @@
-import { PageConfig } from "@/types";
+import { PAGE_CONFIG, PageConfig } from "@/types";
 
 export default function Home() {
-  const pages: PageConfig[] = [
-    { username: "awsdevelopers", displayName: "AWS Developers" },
-    { username: "MorningBrewDailyShow", displayName: "Morning Brew Daily" },
-    { username: "serverlessguru", displayName: "Serverless Guru" },
-    { username: "joenissim", displayName: "Nissim Tutoring⎮Joe Nissim" },
-  ];
+  const pages: PageConfig[] = Object.values(PAGE_CONFIG);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-start p-10 lg:p-24">

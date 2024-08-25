@@ -1,14 +1,14 @@
 "use client";
 
 import { handleQuestionSubmit } from "@/hooks";
-import { Clip } from "@/types";
+import { Clip, Creators } from "@/types";
 import { useState } from "react";
 
 interface QuestionInputProps {
   onStart: () => void;
   onFinish: (summary: string, clips: Clip[]) => void;
   onError: () => void;
-  username: string;
+  username: Creators;
 }
 
 export function QuestionInput({
