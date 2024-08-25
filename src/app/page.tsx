@@ -24,6 +24,10 @@ export default function Home() {
       displayName: CreatorDisplayName.juliensolo,
     },
     {
+      username: Creators.ZoeSugg,
+      displayName: CreatorDisplayName.ZoeSugg,
+    },
+    {
       username: Creators.joenissim,
       displayName: CreatorDisplayName.joenissim,
     },
