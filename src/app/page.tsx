@@ -8,6 +8,10 @@ import { useEffect } from "react";
 export default function Home() {
   const pages: PageConfig[] = [
     {
+      username: Creators.joerogan,
+      displayName: CreatorDisplayName.joerogan,
+    },
+    {
       username: Creators.awsdevelopers,
       displayName: CreatorDisplayName.awsdevelopers,
     },
