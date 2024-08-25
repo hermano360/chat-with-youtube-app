@@ -30,7 +30,8 @@ export default $config({
       },
     });
 
-    api.route("POST /api/question", "src/post.handler");
+    api.route("GET /api", "src/visitors.handler");
+    api.route("POST /api/question", "src/question.handler");
 
     new sst.aws.Nextjs("ChatWithClipsWeb", {
       environment: {

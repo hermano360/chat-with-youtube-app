@@ -1,5 +1,8 @@
+"use client";
+
 import { FooterText } from "@/components/FooterText";
 import { CreatorDisplayName, Creators, PageConfig } from "@/types";
+import { useEffect } from "react";
 
 export default function Home() {
   const pages: PageConfig[] = [
@@ -32,6 +35,13 @@ export default function Home() {
       displayName: CreatorDisplayName.joenissim,
     },
   ];
+
+  // Just a simple counter
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api`, {
+      method: "GET",
+    });
+  }, []);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-start p-10 lg:p-24">

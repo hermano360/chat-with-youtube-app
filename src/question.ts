@@ -144,17 +144,22 @@ export const handler = async (event: APIGatewayProxyEvent) => {
       }),
     };
   }
-  const params = {
-    TableName: Resource.ChatWithClipsDB.name,
-    Item: {
-      pk: `searchResult`,
-      sk: `${username}-${question}-${Date.now()}`,
-    },
-  };
 
   const results = await queryResult(username, question);
   const summary = await formatMessage(question, results);
   const clips = aggregateTranscriptsResults(results);
+
+  // track question and results in DynamoDB
+  const params = {
+    TableName: Resource.ChatWithClipsDB.name,
+    Item: {
+      pk: `searchResult`,
+      sk: `${username}-${Date.now()}`,
+      question,
+      summary,
+      clips: JSON.stringify(clips),
+    },
+  };
 
   try {
     await dynamoDb.send(new PutCommand(params));
