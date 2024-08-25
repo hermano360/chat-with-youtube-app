@@ -19,6 +19,10 @@ export default function Home() {
       displayName: CreatorDisplayName.AndersErickson,
     },
     {
+      username: Creators.juliensolo,
+      displayName: CreatorDisplayName.juliensolo,
+    },
+    {
       username: Creators.joenissim,
       displayName: CreatorDisplayName.joenissim,
     },

@@ -20,6 +20,7 @@ export enum Creators {
   serverlessguru = "serverlessguru",
   joenissim = "joenissim",
   AndersErickson = "AndersErickson",
+  juliensolo = "juliensolo",
 }
 
 export enum CreatorDisplayName {
@@ -28,6 +29,7 @@ export enum CreatorDisplayName {
   serverlessguru = "Serverless Guru",
   joenissim = "Nissim Tutoring⎮Joe Nissim",
   AndersErickson = "Anders Erickson",
+  juliensolo = "julien solomita",
 }
 
 export const PAGE_CONFIG: Record<Creators, PageConfig> = {
@@ -50,5 +52,9 @@ export const PAGE_CONFIG: Record<Creators, PageConfig> = {
   [Creators.joenissim]: {
     username: Creators.joenissim,
     displayName: CreatorDisplayName.joenissim,
+  },
+  [Creators.juliensolo]: {
+    username: Creators.juliensolo,
+    displayName: CreatorDisplayName.juliensolo,
   },
 };
