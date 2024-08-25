@@ -66,7 +66,7 @@ export function PartnerPage({ username, displayName }: PartnerPageProps) {
           embedId={embedId}
           onVideoClick={onVideoClick}
         />
-        <FooterText />
+        <FooterText stickyBottom />
       </PageWrapper>
     </>
   );
