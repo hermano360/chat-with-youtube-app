@@ -15,11 +15,11 @@ export type PageConfig = {
 };
 
 export enum Creators {
-  "awsdevelopers",
-  "MorningBrewDailyShow",
-  "serverlessguru",
-  "joenissim",
-  "AndersErickson",
+  awsdevelopers = "awsdevelopers",
+  MorningBrewDailyShow = "MorningBrewDailyShow",
+  serverlessguru = "serverlessguru",
+  joenissim = "joenissim",
+  AndersErickson = "AndersErickson",
 }
 
 export enum CreatorDisplayName {
