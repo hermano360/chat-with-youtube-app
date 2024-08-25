@@ -1,7 +1,28 @@
-import { PAGE_CONFIG, PageConfig } from "@/types";
+import { CreatorDisplayName, Creators, PageConfig } from "@/types";
 
 export default function Home() {
-  const pages: PageConfig[] = Object.values(PAGE_CONFIG);
+  const pages: PageConfig[] = [
+    {
+      username: Creators.awsdevelopers,
+      displayName: CreatorDisplayName.awsdevelopers,
+    },
+    {
+      username: Creators.MorningBrewDailyShow,
+      displayName: CreatorDisplayName.MorningBrewDailyShow,
+    },
+    {
+      username: Creators.serverlessguru,
+      displayName: CreatorDisplayName.serverlessguru,
+    },
+    {
+      username: Creators.AndersErickson,
+      displayName: CreatorDisplayName.AndersErickson,
+    },
+    {
+      username: Creators.joenissim,
+      displayName: CreatorDisplayName.joenissim,
+    },
+  ];
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-start p-10 lg:p-24">
