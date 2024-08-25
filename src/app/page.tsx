@@ -1,3 +1,4 @@
+import { FooterText } from "@/components/FooterText";
 import { CreatorDisplayName, Creators, PageConfig } from "@/types";
 
 export default function Home() {
@@ -37,7 +38,7 @@ export default function Home() {
       <p className="mb-10 text-lg font-semibold text-center">
         Click on one of our supported Youtube creators to get started!
       </p>
-      <ul className="grid w-full md:w-1/2 gap-6 xl:grid-cols-2">
+      <ul className="grid w-full md:w-1/2 gap-6 xl:grid-cols-2 mb-4">
         {pages.map(({ username, displayName }) => (
           <li key={username}>
             <a
@@ -58,6 +59,7 @@ export default function Home() {
           </li>
         ))}
       </ul>
+      <FooterText />
     </div>
   );
 }
