@@ -8,7 +8,7 @@ export const pageCounter = async (page: Creators | "index") => {
     return;
   }
 
-  fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/page`, {
+  fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/count`, {
     method: "POST",
     body: JSON.stringify({ page }),
   });
