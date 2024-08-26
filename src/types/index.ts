@@ -12,6 +12,7 @@ export type MessagePostResponse = {
 export type PageConfig = {
   username: Creators;
   displayName: CreatorDisplayName;
+  profilePic?: string;
 };
 
 export enum Creators {
@@ -36,37 +37,56 @@ export enum CreatorDisplayName {
   joerogan = "PowerfulJRE",
 }
 
+export enum CreatorProfilePic {
+  awsdevelopers = "https://yt3.googleusercontent.com/_eb0KbxyjUmU0Gev_koCAdQz7Yapuvv7LBDdv3RBn647h7Cu1TE45zRGVSr-PCuT92MkT5UGlA=s160-c-k-c0x00ffffff-no-rj",
+  MorningBrewDailyShow = "https://yt3.ggpht.com/Q3U6_AtzX4sD370dnByPvskU0BdC3fsNJHsV7vAUvgTxxu_umsnNzVhtPqQm5xtV3dnAHjrG=s176-c-k-c0x00ffffff-no-rj-mo",
+  serverlessguru = "https://yt3.ggpht.com/DdCnVFRerdq76Bv7wkrs5s6LsRMLRCF0wU8Ku0_dJ_H85Hc2Hi9KDDacGpEy_hUaaqwbzdBWMA=s176-c-k-c0x00ffffff-no-rj-mo",
+  joenissim = "https://yt3.googleusercontent.com/_BAfcICY61HtOSxpvKSBUzvpOSDQprF3RG3JZ4KpqaPyYg2JTW-YJzORaufd3txVLxUGjkTg=s160-c-k-c0x00ffffff-no-rj",
+  AndersErickson = "https://yt3.googleusercontent.com/QSoNia3XmGfPc3pFh8RE9BSPl7nOPpqbHcfyv3e2Qbn1pCPw-SM7Bw4F-bKCQVspPtNv_2CFkg=s160-c-k-c0x00ffffff-no-rj",
+  juliensolo = "https://yt3.googleusercontent.com/ytc/AIdro_nNHPlj0YH7cEELbJj9174W_tcdWZISKgbMDZEDVKyJHHA=s160-c-k-c0x00ffffff-no-rj",
+  ZoeSugg = "https://yt3.googleusercontent.com/ytc/AIdro_mIy4fUwXQEe_EFkBnhibEZz3k1xgm8gwKKjitEFIyNe4Q=s160-c-k-c0x00ffffff-no-rj",
+  joerogan = "https://yt3.googleusercontent.com/ytc/AIdro_kf3qwg9_tCqnvEjOnu2TeKh7sW2pciWWxCxWl4G2ETXT0=s176-c-k-c0x00ffffff-no-rj-mo",
+}
+
 export const PAGE_CONFIG: Record<Creators, PageConfig> = {
   [Creators.awsdevelopers]: {
     username: Creators.awsdevelopers,
     displayName: CreatorDisplayName.awsdevelopers,
+    profilePic: CreatorProfilePic.awsdevelopers,
   },
   [Creators.MorningBrewDailyShow]: {
     username: Creators.MorningBrewDailyShow,
     displayName: CreatorDisplayName.MorningBrewDailyShow,
+    profilePic: CreatorProfilePic.MorningBrewDailyShow,
   },
   [Creators.AndersErickson]: {
     username: Creators.AndersErickson,
     displayName: CreatorDisplayName.AndersErickson,
+    profilePic: CreatorProfilePic.AndersErickson,
   },
   [Creators.serverlessguru]: {
     username: Creators.serverlessguru,
     displayName: CreatorDisplayName.serverlessguru,
+    profilePic: CreatorProfilePic.serverlessguru,
   },
   [Creators.joenissim]: {
     username: Creators.joenissim,
     displayName: CreatorDisplayName.joenissim,
+    profilePic: CreatorProfilePic.joenissim,
   },
   [Creators.juliensolo]: {
     username: Creators.juliensolo,
     displayName: CreatorDisplayName.juliensolo,
+    profilePic: CreatorProfilePic.juliensolo,
   },
   [Creators.ZoeSugg]: {
     username: Creators.ZoeSugg,
     displayName: CreatorDisplayName.ZoeSugg,
+    profilePic: CreatorProfilePic.ZoeSugg,
   },
   [Creators.joerogan]: {
     username: Creators.joerogan,
     displayName: CreatorDisplayName.joerogan,
+    profilePic: CreatorProfilePic.joerogan,
   },
 };

@@ -2,7 +2,13 @@
 
 import { FooterText } from "@/components/FooterText";
 import { pageCounter } from "@/hooks";
-import { CreatorDisplayName, Creators, PageConfig } from "@/types";
+import {
+  CreatorDisplayName,
+  CreatorProfilePic,
+  Creators,
+  PageConfig,
+} from "@/types";
+import Image from "next/image";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -10,34 +16,42 @@ export default function Home() {
     {
       username: Creators.joerogan,
       displayName: CreatorDisplayName.joerogan,
+      profilePic: CreatorProfilePic.joerogan,
     },
     {
       username: Creators.awsdevelopers,
       displayName: CreatorDisplayName.awsdevelopers,
+      profilePic: CreatorProfilePic.awsdevelopers,
     },
     {
       username: Creators.MorningBrewDailyShow,
       displayName: CreatorDisplayName.MorningBrewDailyShow,
+      profilePic: CreatorProfilePic.MorningBrewDailyShow,
     },
     {
       username: Creators.serverlessguru,
       displayName: CreatorDisplayName.serverlessguru,
+      profilePic: CreatorProfilePic.serverlessguru,
     },
     {
       username: Creators.AndersErickson,
       displayName: CreatorDisplayName.AndersErickson,
+      profilePic: CreatorProfilePic.AndersErickson,
     },
     {
       username: Creators.juliensolo,
       displayName: CreatorDisplayName.juliensolo,
+      profilePic: CreatorProfilePic.juliensolo,
     },
     {
       username: Creators.ZoeSugg,
       displayName: CreatorDisplayName.ZoeSugg,
+      profilePic: CreatorProfilePic.ZoeSugg,
     },
     {
       username: Creators.joenissim,
       displayName: CreatorDisplayName.joenissim,
+      profilePic: CreatorProfilePic.joenissim,
     },
   ];
 
@@ -56,21 +70,33 @@ export default function Home() {
         Click on one of our supported Youtube creators to get started!
       </p>
       <ul className="grid w-full md:w-1/2 gap-6 xl:grid-cols-2 mb-4">
-        {pages.map(({ username, displayName }) => (
+        {pages.map(({ username, displayName, profilePic }) => (
           <li key={username}>
             <a
+              className="flex justify-center w-full items-center"
               href={`/${username}`}
-              className={`flex flex-col items-center 
-                        justify-center w-full p-5 bg-gray-900 text-white
+            >
+              <div
+                className="flex justify-center flex-col flex flex-col items-center 
+                        justify-center p-5 bg-gray-900 text-white
                         border  rounded-lg cursor-pointer 
                         hover:text-gray-300 border-gray-600 
-                        hover:bg-gray-600`}
-            >
-              <div className="w-full text-center text-lg font-semibold mb-2">
-                {displayName}
-              </div>
-              <div className="w-full text-center text-sm text-gray-400">
-                @{username}
+                        hover:bg-gray-600 rounded-2xl w-fit"
+              >
+                {profilePic && (
+                  <Image
+                    src={profilePic}
+                    alt={`Profile Pic for ${displayName}`}
+                    style={{ borderRadius: "50%" }}
+                    className="h-52 w-52"
+                  />
+                )}
+                <div className="w-full text-center text-lg font-semibold">
+                  {displayName}
+                </div>
+                <div className="w-full text-center text-sm text-gray-400">
+                  @{username}
+                </div>
               </div>
             </a>
           </li>

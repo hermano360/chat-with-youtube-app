@@ -11,8 +11,11 @@ interface WelcomeMessageProps {
 export function WelcomeMessage({ username, displayName }: WelcomeMessageProps) {
   // page counter
   useEffect(() => {
+    if (!username) {
+      return;
+    }
     pageCounter(username);
-  }, []);
+  }, [username]);
 
   return (
     <>
