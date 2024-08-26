@@ -84,7 +84,7 @@ export default function Home() {
                         hover:bg-gray-600 rounded-2xl w-fit"
               >
                 {profilePic && (
-                  <Image
+                  <img
                     src={profilePic}
                     alt={`Profile Pic for ${displayName}`}
                     style={{ borderRadius: "50%" }}
