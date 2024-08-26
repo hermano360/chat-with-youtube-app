@@ -1,5 +1,6 @@
 "use client";
 
+import { processTime } from "@/hooks";
 import { Clip } from "@/types";
 
 interface VideoClipsProps {
@@ -16,13 +17,17 @@ export function VideoClips({ clips, embedId, onVideoClick }: VideoClipsProps) {
       {clips.map((item) => (
         <div key={item.link} className="w-full mb-10">
           <h3 className="text-lg mb-4 font-semibold">{item.title}</h3>
-          <ul className="grid w-full gap-6 md:grid-cols-4">
-            {item.timeStamps.map((time, i) => {
-              const linkEmbedId = `${item.link.split("v=")[1]}?start=${time}`;
+          <ul className="grid w-full gap-6 sm:grid-cols-2 md:grid-cols-4">
+            {item.timeStamps.map((time) => {
+              const videoId = item.link.split("v=")[1];
+              const linkEmbedId = `${videoId}?start=${time}`;
               const isSelected = embedId === linkEmbedId;
               return (
                 <li key={`${item.link}-${time}`}>
-                  <a
+                  <div
+                    className={`w-full cursor-pointer p-2 border border-4 rounded-lg hover:border-gray-300 ${
+                      isSelected ? "border-gray-300" : "border-gray-600"
+                    }`}
                     onClick={() => {
                       if (isSelected) {
                         onVideoClick("", "");
@@ -34,20 +39,14 @@ export function VideoClips({ clips, embedId, onVideoClick }: VideoClipsProps) {
                         onVideoClick(linkEmbedId, item.title);
                       }
                     }}
-                    className={`inline-flex items-center 
-                        justify-center w-full p-5 ${
-                          isSelected
-                            ? "text-gray-300 bg-gray-600"
-                            : "bg-gray-900  text-white"
-                        }  
-                        border  rounded-lg cursor-pointer 
-                        hover:text-gray-300 border-gray-600 
-                        hover:bg-gray-600`}
                   >
-                    <div className="w-full text-center text-lg font-semibold">
-                      Source #{i + 1}
+                    <img
+                      src={`https://img.youtube.com/vi/${videoId}/sddefault.jpg`}
+                    />
+                    <div className="w-full text-center text-md font-semibold text-gray-300">
+                      {processTime(time)}
                     </div>
-                  </a>
+                  </div>
                 </li>
               );
             })}

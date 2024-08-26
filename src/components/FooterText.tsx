@@ -5,7 +5,7 @@ interface FooterTextProps {
 export const FooterText = ({ stickyBottom }: FooterTextProps) => {
   return (
     <div
-      className={`text-sm text-gray-700 ${
+      className={`text-sm text-gray-600 ${
         stickyBottom ? "sticky bottom-10" : ""
       } text-center bg-opacity-5 bg-gray-900`}
     >
