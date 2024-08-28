@@ -24,6 +24,11 @@ export default function Home() {
       profilePic: CreatorProfilePic.awsdevelopers,
     },
     {
+      username: Creators.HuggingFace,
+      displayName: CreatorDisplayName.HuggingFace,
+      profilePic: CreatorProfilePic.HuggingFace,
+    },
+    {
       username: Creators.MorningBrewDailyShow,
       displayName: CreatorDisplayName.MorningBrewDailyShow,
       profilePic: CreatorProfilePic.MorningBrewDailyShow,
