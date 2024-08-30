@@ -10,11 +10,11 @@ export const PageTips = () => {
         </li>
         <li className="mb-2">
           Unless a date or time was discussed in the conversation, the app
-          doesn't have context of when something was said.
+          doesn&apos;t have context of when something was said.
         </li>
         <li>
-          The more specific the question, the better. You'll be surprised how
-          well the app can pick out small details from conversation!
+          The more specific the question, the better. You&apos;ll be surprised
+          how well the app can pick out small details from conversation!
         </li>
       </ul>
     </>

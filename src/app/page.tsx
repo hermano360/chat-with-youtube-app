@@ -75,10 +75,10 @@ export default function Home() {
         Click on one of our supported Youtube creators to get started!
       </p>
       <p className="mb-10 text-sm text-center">
-        By accessing the creator's entire video library, you'll be able to ask a
-        question based primarily on the content of their own videos. You'll also
-        get returned back the most relevant videos pertaining to your question
-        for personal review.
+        By accessing the creator&apos;s entire video library, you&apos;ll be
+        able to ask a question based primarily on the content of their own
+        videos. You&apos;ll also get returned back the most relevant videos
+        pertaining to your question for personal review.
       </p>
       <ul className="grid w-full md:w-1/2 gap-6 xl:grid-cols-2 mb-4">
         {pages.map(({ username, displayName, profilePic }) => (
