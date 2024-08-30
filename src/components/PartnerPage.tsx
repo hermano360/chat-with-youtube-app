@@ -11,6 +11,7 @@ import { useVideoHandling } from "@/hooks";
 import { FooterText } from "./FooterText";
 import { useRef } from "react";
 import { CreatorDisplayName, Creators } from "@/types";
+import { PageTips } from "./PageTips";
 
 interface PartnerPageProps {
   username: Creators;
@@ -66,6 +67,7 @@ export function PartnerPage({ username, displayName }: PartnerPageProps) {
           embedId={embedId}
           onVideoClick={onVideoClick}
         />
+        <PageTips />
         <FooterText />
       </PageWrapper>
     </>

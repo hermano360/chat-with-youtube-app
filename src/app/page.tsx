@@ -71,8 +71,14 @@ export default function Home() {
       <h2 className="mb-10 text-2xl font-semibold text-center">
         Chat with Clips! 🎉
       </h2>
-      <p className="mb-10 text-lg font-semibold text-center">
+      <p className="mb-4 text-lg font-semibold text-center">
         Click on one of our supported Youtube creators to get started!
+      </p>
+      <p className="mb-10 text-sm text-center">
+        By accessing the creator's entire video library, you'll be able to ask a
+        question based primarily on the content of their own videos. You'll also
+        get returned back the most relevant videos pertaining to your question
+        for personal review.
       </p>
       <ul className="grid w-full md:w-1/2 gap-6 xl:grid-cols-2 mb-4">
         {pages.map(({ username, displayName, profilePic }) => (
@@ -107,6 +113,8 @@ export default function Home() {
           </li>
         ))}
       </ul>
+
+      <p></p>
       <FooterText />
     </div>
   );
