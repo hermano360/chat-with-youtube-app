@@ -28,9 +28,9 @@ export default function Home() {
       profilePic: CreatorProfilePic.hubermanlab,
     },
     {
-      username: Creators.awsdevelopers,
-      displayName: CreatorDisplayName.awsdevelopers,
-      profilePic: CreatorProfilePic.awsdevelopers,
+      username: Creators.restishistorypod,
+      displayName: CreatorDisplayName.restishistorypod,
+      profilePic: CreatorProfilePic.restishistorypod,
     },
     {
       username: Creators.HuggingFace,
