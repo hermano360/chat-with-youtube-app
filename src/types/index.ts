@@ -25,6 +25,7 @@ export enum Creators {
   ZoeSugg = "ZoeSugg",
   joerogan = "joerogan",
   HuggingFace = "HuggingFace",
+  hubermanlab = "hubermanlab",
 }
 
 export enum CreatorDisplayName {
@@ -37,6 +38,7 @@ export enum CreatorDisplayName {
   ZoeSugg = "Zoe Sugg",
   joerogan = "PowerfulJRE",
   HuggingFace = "HuggingFace",
+  hubermanlab = "Andrew Huberman",
 }
 
 export enum CreatorProfilePic {
@@ -49,6 +51,7 @@ export enum CreatorProfilePic {
   ZoeSugg = "https://yt3.googleusercontent.com/ytc/AIdro_mIy4fUwXQEe_EFkBnhibEZz3k1xgm8gwKKjitEFIyNe4Q=s160-c-k-c0x00ffffff-no-rj",
   joerogan = "https://yt3.googleusercontent.com/ytc/AIdro_kf3qwg9_tCqnvEjOnu2TeKh7sW2pciWWxCxWl4G2ETXT0=s176-c-k-c0x00ffffff-no-rj-mo",
   HuggingFace = "https://yt3.googleusercontent.com/ytc/AIdro_mNrquVCKsXMFEQe0YqYV7cTkQ6TsEIVq-kWruQJoOH7g=s160-c-k-c0x00ffffff-no-rj",
+  hubermanlab = "https://yt3.googleusercontent.com/5ONImZvpa9_hYK12Xek2E2JLzRc732DWsZMX2F-AZ1cTutTQLBuAmcEtFwrCgypqJncl5HrV2w=s160-c-k-c0x00ffffff-no-rj",
 }
 
 export const PAGE_CONFIG: Record<Creators, PageConfig> = {
@@ -96,5 +99,10 @@ export const PAGE_CONFIG: Record<Creators, PageConfig> = {
     username: Creators.HuggingFace,
     displayName: CreatorDisplayName.HuggingFace,
     profilePic: CreatorProfilePic.HuggingFace,
+  },
+  [Creators.hubermanlab]: {
+    username: Creators.hubermanlab,
+    displayName: CreatorDisplayName.hubermanlab,
+    profilePic: CreatorProfilePic.hubermanlab,
   },
 };

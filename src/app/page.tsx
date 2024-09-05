@@ -8,7 +8,6 @@ import {
   Creators,
   PageConfig,
 } from "@/types";
-import Image from "next/image";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -17,6 +16,16 @@ export default function Home() {
       username: Creators.joerogan,
       displayName: CreatorDisplayName.joerogan,
       profilePic: CreatorProfilePic.joerogan,
+    },
+    {
+      username: Creators.awsdevelopers,
+      displayName: CreatorDisplayName.awsdevelopers,
+      profilePic: CreatorProfilePic.awsdevelopers,
+    },
+    {
+      username: Creators.hubermanlab,
+      displayName: CreatorDisplayName.hubermanlab,
+      profilePic: CreatorProfilePic.hubermanlab,
     },
     {
       username: Creators.awsdevelopers,
