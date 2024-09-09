@@ -27,6 +27,7 @@ export enum Creators {
   HuggingFace = "HuggingFace",
   hubermanlab = "hubermanlab",
   restishistorypod = "restishistorypod",
+  hillerfit = "hillerfit",
 }
 
 export enum CreatorDisplayName {
@@ -41,6 +42,7 @@ export enum CreatorDisplayName {
   HuggingFace = "HuggingFace",
   hubermanlab = "Andrew Huberman",
   restishistorypod = "The Rest Is History",
+  hillerfit = "Andrew Hiller",
 }
 
 export enum CreatorProfilePic {
@@ -55,6 +57,7 @@ export enum CreatorProfilePic {
   HuggingFace = "https://yt3.googleusercontent.com/ytc/AIdro_mNrquVCKsXMFEQe0YqYV7cTkQ6TsEIVq-kWruQJoOH7g=s160-c-k-c0x00ffffff-no-rj",
   hubermanlab = "https://yt3.googleusercontent.com/5ONImZvpa9_hYK12Xek2E2JLzRc732DWsZMX2F-AZ1cTutTQLBuAmcEtFwrCgypqJncl5HrV2w=s160-c-k-c0x00ffffff-no-rj",
   restishistorypod = "https://yt3.googleusercontent.com/nrkCjT2S0wgFLymgDvUYF6DEXS_lpN99c499kTQm6YTIkSN_FthRf9JIQHg7OMI8SKDU3Et0JA=s160-c-k-c0x00ffffff-no-rj",
+  hillerfit = "https://yt3.googleusercontent.com/Y5E5FBRNlUvT1z_fGdGZTGSlllJZc-nwSiClYgZN-rYb5NtwXVpYzo6c3Y96Mgw2zyajsFrAvIk=s160-c-k-c0x00ffffff-no-rj",
 }
 
 export const PAGE_CONFIG: Record<Creators, PageConfig> = {
@@ -112,5 +115,10 @@ export const PAGE_CONFIG: Record<Creators, PageConfig> = {
     username: Creators.restishistorypod,
     displayName: CreatorDisplayName.restishistorypod,
     profilePic: CreatorProfilePic.restishistorypod,
+  },
+  [Creators.hillerfit]: {
+    username: Creators.hillerfit,
+    displayName: CreatorDisplayName.hillerfit,
+    profilePic: CreatorProfilePic.hillerfit,
   },
 };

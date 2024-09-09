@@ -63,6 +63,11 @@ export default function Home() {
       profilePic: CreatorProfilePic.ZoeSugg,
     },
     {
+      username: Creators.hillerfit,
+      displayName: CreatorDisplayName.hillerfit,
+      profilePic: CreatorProfilePic.hillerfit,
+    },
+    {
       username: Creators.joenissim,
       displayName: CreatorDisplayName.joenissim,
       profilePic: CreatorProfilePic.joenissim,
