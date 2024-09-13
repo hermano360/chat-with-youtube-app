@@ -13,11 +13,6 @@ import { useEffect } from "react";
 export default function Home() {
   const pages: PageConfig[] = [
     {
-      username: Creators.joerogan,
-      displayName: CreatorDisplayName.joerogan,
-      profilePic: CreatorProfilePic.joerogan,
-    },
-    {
       username: Creators.awsdevelopers,
       displayName: CreatorDisplayName.awsdevelopers,
       profilePic: CreatorProfilePic.awsdevelopers,
@@ -56,11 +51,6 @@ export default function Home() {
       username: Creators.juliensolo,
       displayName: CreatorDisplayName.juliensolo,
       profilePic: CreatorProfilePic.juliensolo,
-    },
-    {
-      username: Creators.ZoeSugg,
-      displayName: CreatorDisplayName.ZoeSugg,
-      profilePic: CreatorProfilePic.ZoeSugg,
     },
     {
       username: Creators.hillerfit,
